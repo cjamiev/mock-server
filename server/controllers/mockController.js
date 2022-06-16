@@ -1,8 +1,4 @@
-const {
-  logEntry,
-  getMatchedMockResponse,
-  loadConfiguration
-} = require('../utils/mockserver-util');
+const { logEntry, getMatchedMockResponse, loadConfiguration } = require('../utils/mockserver-util');
 const { isEqual } = require('../utils/dataHelper');
 
 const MOCK_SERVER_ERROR = 'mock server error has occurred';
@@ -32,9 +28,8 @@ const mockController = async (reqUrl, reqMethod, payload) => {
   const shouldDelayThisUrl = delayUrls.some((item) => item === reqUrl);
   const matchedUrl = overrideUrls.some((endpoint) => endpoint === reqUrl);
 
-  if (log) {
-    return logEntry(reqUrl, payload);
-  }
+  log && logEntry(reqUrl, payload);
+
   if (error) {
     return { message: MOCK_SERVER_ERROR, error: true };
   } else if (matchedUrl) {
