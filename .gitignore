@@ -1,0 +1,5 @@
+/node_modules
+/tmp
+*.log*
+/server/static/bundle.js
+/storage
